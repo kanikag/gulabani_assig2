@@ -15,32 +15,38 @@
   </head>
 
   <body>
+  <div id="fb-root"></div>
   <script>
       window.fbAsyncInit = function() {
           FB.init({
-              appId            : 'your-app-id',
-              autoLogAppEvents : true,
-              xfbml            : true,
-              version          : 'v4.0'
+              appId      : '{your-app-id}',
+              cookie     : true,
+              xfbml      : true,
+              version    : 'v4.0'
           });
-      };
-  </script>
-  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 
-    <div class="container">
+          FB.AppEvents.logPageView();
+
+      };
+
+      (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2472070969536458&autoLogAppEvents=1"></script>
+
+
+  <div class="container">
       <form method="POST" action="${contextPath}/login" class="form-signin">
         <h2 class="form-heading">Log in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="Username"
-                   autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
         </div>
       </form>
     </div>

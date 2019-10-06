@@ -15,11 +15,11 @@ public class User {
     private String email;
 
     @ManyToOne
-    @Column(name = "Role_IDrole")
+    @JoinColumn(name = "Role_IDrole")
     private Role role;
 
     @ManyToOne
-    @Column(name = "Organization")
+    @JoinColumn(name = "Organization")
     private Organization organization;
 
     @Column(name = "Lat")
