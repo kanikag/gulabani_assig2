@@ -16,16 +16,21 @@
 
   <body>
   <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2472070969536458&autoLogAppEvents=1"></script>
   <script>
       window.fbAsyncInit = function() {
           FB.init({
-              appId      : '{your-app-id}',
+              appId      : 2472070969536458,
               cookie     : true,
               xfbml      : true,
               version    : 'v4.0'
           });
 
           FB.AppEvents.logPageView();
+
+          FB.getLoginStatus(function(response) {
+              console.log(response);
+          });
 
       };
 
@@ -36,9 +41,8 @@
           js.src = "https://connect.facebook.net/en_US/sdk.js";
           fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-  </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2472070969536458&autoLogAppEvents=1"></script>
 
+  </script>
 
   <div class="container">
       <form method="POST" action="${contextPath}/login" class="form-signin">
