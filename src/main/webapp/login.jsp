@@ -16,8 +16,7 @@
 
   <body>
   <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2472070969536458&autoLogAppEvents=1"></script>
-  <script>
+ <script>
       window.fbAsyncInit = function() {
           FB.init({
               appId      : 2472070969536458,
@@ -43,6 +42,7 @@
       }(document, 'script', 'facebook-jssdk'));
 
   </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2472070969536458&autoLogAppEvents=1"></script>
 
   <div class="container">
       <form method="POST" action="${contextPath}/login" class="form-signin">
