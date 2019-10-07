@@ -1,14 +1,20 @@
 package com.hellokoding.auth.web;
 
-import com.hellokoding.auth.model.User;
 import com.hellokoding.auth.service.SecurityService;
 import com.hellokoding.auth.service.UserService;
+import com.hellokoding.auth.social.FacebookConnectionService;
 import com.hellokoding.auth.validator.UserValidator;
+import com.hellokoding.auth.web.model.FBGraph;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -21,20 +27,56 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
 
+    @Autowired
+    FacebookConnectionService fbConnection;
+
 
     @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
+    public String login(Model model, String logout, HttpServletRequest req) {
+        if (logout != null) {
             model.addAttribute("message", "You have been logged out successfully.");
+            return "login";
+        }
 
         return "login";
     }
 
+    @GetMapping("/facebooklogin")
+    public ModelAndView facebookLogin(HttpServletRequest req, ModelMap model) {
+        String code = req.getParameter("code");
+        if (code == null || code.equals("")) {
+            throw new RuntimeException(
+                    "ERROR: Didn't get code parameter in callback.");
+        }
+        String accessToken = fbConnection.getAccessToken(code);
+        if (accessToken != null) {
+            securityService.autoLogin("doc");
+            return new ModelAndView("forward:/doctorHome", model);
+        }
+        model.addAttribute("error", "Could not login with facebook");
+        return new ModelAndView("forward:/login", model);
+    }
+
+    @GetMapping("/doctorHome")
+    public String doctorHome(Model model) {
+        return "doctorHome";
+    }
+
     @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
+    public String welcome(Model model, HttpServletRequest req, HttpServletResponse response) {
+        String code = req.getParameter("code");
+        if (code == null || code.equals("")) {
+            throw new RuntimeException(
+                    "ERROR: Didn't get code parameter in callback.");
+        }
+
+        String accessToken = fbConnection.getAccessToken(code);
+
+        FBGraph fbGraph = new FBGraph(accessToken);
+        String graph = fbGraph.getFBGraph();
+        Map<String, String> fbProfileData = fbGraph.getGraphData(graph);
+        System.out.println(fbProfileData);
+        securityService.autoLogin("doc");
         return "welcome";
     }
 }

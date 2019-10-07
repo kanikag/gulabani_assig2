@@ -1,7 +1,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@page import="com.hellokoding.auth.social.FacebookConnectionService"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<%
+    FacebookConnectionService fbConnection = new FacebookConnectionService();
+%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -13,41 +18,12 @@
       <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
       <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
       <meta name="google-signin-scope" content="kanikagulabani9@gmail.com">
-      <meta name="google-signin-client_id" content="831334154326-qoo8n1l2105v57mnaltoqgp6cp770og8.apps.googleusercontent.com">
+      <meta name="google-signin-client_id" content="831334154326-1lb1hpusmpqp2dndg4dgb4em6h4hqjaf.apps.googleusercontent.com">
       <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
   </head>
 
-  <body>
-     <div id="fb-root"></div>
-     <script>
-      window.fbAsyncInit = function() {
-          FB.init({
-              appId      : 2472070969536458,
-              cookie     : true,
-              xfbml      : true,
-              version    : 'v4.0'
-          });
-
-          FB.AppEvents.logPageView();
-
-          FB.getLoginStatus(function(response) {
-              console.log(response);
-          });
-
-      };
-
-      (function(d, s, id){
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-  </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2472070969536458&autoLogAppEvents=1"></script>
-     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-  <script>
+  <body style="text-align: center; margin: 0 auto;">
+      <script>
       function onSignIn(googleUser) {
           // Useful data for your client-side scripts:
           var profile = googleUser.getBasicProfile();
@@ -68,11 +44,17 @@
         <h2 class="form-heading">Log in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
-
+<%--            <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>--%>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
         </div>
       </form>
     </div>
+
+     <div style="margin: 0 auto;">
+         <a href="<%=fbConnection.getFBAuthUrl()%>">
+             <img style="margin-top: 138px;" src="./resources/img/facebookloginbutton.png" />
+         </a>
+     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
