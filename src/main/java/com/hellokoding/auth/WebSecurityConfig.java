@@ -27,8 +27,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/resources/**", "/facebooklogin").permitAll()
+                .antMatchers("/resources/**", "/facebooklogin", "/facebooklogin/", "/spotifylogin").permitAll()
                 .antMatchers(HttpMethod.GET, "/doctorHome").hasRole("physician")
+                .antMatchers(HttpMethod.GET, "/patientHome").hasRole("patient")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

@@ -1,4 +1,4 @@
-package com.hellokoding.auth.web.model;
+package com.hellokoding.auth.social;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,15 +9,11 @@ import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FBGraph {
-    private String accessToken;
-
-    public FBGraph(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
-    public String getFBGraph() {
+    public String getFBGraph(String accessToken) {
         String graph = null;
         try {
 
