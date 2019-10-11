@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Create an account</title>
+    <title>Patient's Home</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
@@ -19,7 +19,22 @@
 </form>
 <a onclick="document.forms['logoutForm'].submit()">Logout</a>
 <div class="container">
-    Welcome to Patient's Home!
+    <h1>Welcome to Patient's Home!</h1>
+    <table>
+        <c:forEach items="${videos}" var="video" varStatus="id">
+            <tr style="padding: 10px;">
+                <td>
+                    <img src="${video.snippet.thumbnails.medium.url}" width="${video.snippet.thumbnails.medium.width}" height="${video.snippet.thumbnails.medium.height}" />
+                </td>
+                <td>
+                    <span>${video.snippet.title}</span>
+                </td>
+                <td>
+                    <span>${video.snippet.description}</span>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

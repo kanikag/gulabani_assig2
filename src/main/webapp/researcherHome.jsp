@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Doctor's Home</title>
+    <title>Researcher's Home</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
@@ -19,8 +19,7 @@
 </form>
 <a onclick="document.forms['logoutForm'].submit()">Logout</a>
 <div class="container">
-    Welcome to Dr. ${username} Home!
-
+    Welcome to Researcher's Home!
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
