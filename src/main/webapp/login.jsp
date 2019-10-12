@@ -21,17 +21,19 @@
 <div style="margin: 0 auto;">
     Doctor's Login
     <a href="${facebookUrl}">
-        <img style="margin-top: 18px; width: 235px;" src="./resources/img/facebookloginbutton.png"/>
+        <img style="margin-top: 18px; width: 235px;" src="resources/img/facebookloginbutton.png"/>
     </a>
 </div>
 <div style="margin: 0 auto;">
+    Patient's Login
     <a href="${spotifyUrl}">
-        <img style="margin-top: 18px; width: 250px;" src="./resources/img/spotifyloginbutton.png"/>
+        <img style="margin-top: 18px; width: 250px;" src="resources/img/spotifyloginbutton.png"/>
     </a>
 </div>
 <div style="margin: 0 auto;">
+    Researcher's Login
     <a href="${githubUrl}">
-        <img style="margin-top: 18px; width: 250px;" src="./resources/img/githubloginbutton.png"/>
+        <img style="margin-top: 18px; width: 250px;" src="resources/img/githubloginbutton.png"/>
     </a>
 </div>
 

@@ -32,6 +32,9 @@ public class User {
     @OneToMany(mappedBy = "doctor")
     private List<Therapy> therapies;
 
+    @OneToMany(mappedBy = "patient")
+    private List<Therapy> patientTherapies;
+
     public Long getUserId() {
         return userId;
     }
@@ -86,5 +89,21 @@ public class User {
 
     public void setLng(BigDecimal lng) {
         this.lng = lng;
+    }
+
+    public List<Therapy> getTherapies() {
+        return therapies;
+    }
+
+    public void setTherapies(List<Therapy> therapies) {
+        this.therapies = therapies;
+    }
+
+    public List<Therapy> getPatientTherapies() {
+        return patientTherapies;
+    }
+
+    public void setPatientTherapies(List<Therapy> patientTherapies) {
+        this.patientTherapies = patientTherapies;
     }
 }

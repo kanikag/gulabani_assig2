@@ -1,50 +1,22 @@
 package com.lnu.auth.model;
 
+import java.util.Date;
+import java.util.List;
+
 public class Test {
-    private int type;
-    private String x;
-    private String y;
-    private String time;
-    private int button;
-    private int correct;
+    private Date startTime;
+    private List<TestSession> testSessions;
 
-    public Test(int type, String x, String y, String time) {
-        this.type = type;
-        this.x = x;
-        this.y = y;
-        this.time = time;
+    public Test(Date startTime, List<TestSession> testSessions) {
+        this.startTime = startTime;
+        this.testSessions = testSessions;
     }
 
-    public Test(int type, String x, String y, String time, int button, int correct) {
-        this.type = type;
-        this.x = x;
-        this.y = y;
-        this.time = time;
-        this.button = button;
-        this.correct = correct;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public String getX() {
-        return x;
-    }
-
-    public String getY() {
-        return y;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public int getButton() {
-        return button;
-    }
-
-    public int getCorrect() {
-        return correct;
+    public List<TestSession> getTestSessions() {
+        return testSessions;
     }
 }

@@ -10,7 +10,8 @@ public class Therapy {
     @Column(name = "therapyID")
     private Long therapyId;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "User_IDpatient")
     private User patient;
 
     @ManyToOne
@@ -18,10 +19,10 @@ public class Therapy {
     private User doctor;
 
     @ManyToOne
-    @JoinColumn(name = "TherapyList_IDtherapylist")
+    @JoinColumn(name = "list_id")
     private TherapyList therapyList;
 
-    @OneToMany(mappedBy="therapy")
+    @OneToMany(mappedBy = "therapy")
     private List<Test> tests;
 
     public Long getTherapyId() {

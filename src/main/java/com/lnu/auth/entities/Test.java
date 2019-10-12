@@ -12,15 +12,15 @@ public class Test {
     @Column(name = "testID")
     private Long id;
 
-    @Column(name = "startTime", columnDefinition="DATETIME")
+    /*@Column(name = "startTime", columnDefinition="DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date startTime;
+    private Date startTime;*/
 
     @ManyToOne
     @JoinColumn(name = "Therapy_IDtherapy")
     private Therapy therapy;
 
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "test")
     private List<TestSession> testSessions;
 
     public Long getId() {
@@ -31,6 +31,7 @@ public class Test {
         this.id = id;
     }
 
+/*
     public Date getStartTime() {
         return startTime;
     }
@@ -38,6 +39,7 @@ public class Test {
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
+*/
 
     public Therapy getTherapy() {
         return therapy;
