@@ -21,7 +21,7 @@
     <a onclick="document.forms['logoutForm'].submit()">Logout</a>
 </div>
 <div class="container">
-    <h1>Welcome to Patient's Home!</h1>
+    <h1>Welcome to  ${username} Home!</h1>
     <table id="videoTable">
         <thead>
         <tr>

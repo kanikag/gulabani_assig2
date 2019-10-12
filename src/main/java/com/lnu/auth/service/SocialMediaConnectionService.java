@@ -2,7 +2,6 @@ package com.lnu.auth.service;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,7 +13,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.Arrays;
 
 @Service
 public class SocialMediaConnectionService {
@@ -108,7 +106,6 @@ public class SocialMediaConnectionService {
                 accessToken = json.getString("access_token").toString();
             } else
                 accessToken = b.toString();
-            System.out.println("Accesss Token " + accessToken);
             if (accessToken.startsWith("{")) {
                 throw new RuntimeException("ERROR: Access Token Invalid: "
                         + accessToken);

@@ -21,7 +21,7 @@
     <a onclick="document.forms['logoutForm'].submit()">Logout</a>
 </div>
 <div class="container">
-    <h1>Welcome to Researcher's Home!</h1>
+    <h1>Welcome to  ${username} Home!</h1>
     <c:if test="${patientsData.size() > 0}"><h2>Patient's Data</h2></c:if>
     <c:forEach items="${patientsData}" var="patientData" varStatus="pid">
         <div style="border-bottom: 1px solid #bbb">

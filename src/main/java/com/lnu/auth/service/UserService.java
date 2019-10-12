@@ -87,7 +87,6 @@ public class UserService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(testSessions);
         return testSessions;
     }
 }

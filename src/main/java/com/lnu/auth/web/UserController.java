@@ -143,6 +143,8 @@ public class UserController {
         ResponseEntity<Videos> response = restTemplate.exchange(URLDecoder.decode(YOUTUBE_PARKINSONS_VIDEO), HttpMethod.GET, entity, new ParameterizedTypeReference<Videos>() {
         });
         Videos videos = response.getBody();
+        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("username", authUser.getUsername());
         model.addAttribute("videos", videos.getItems());
         return "patientHome";
     }
@@ -163,6 +165,7 @@ public class UserController {
             e.printStackTrace();
         }
         User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("username", authUser.getUsername());
         model.addAttribute("patientsData", userService.getPatientData(authUser.getUsername()));
         model.addAttribute("channels", channels);
         return "researcherHome";
@@ -172,8 +175,6 @@ public class UserController {
     @GetMapping("/doctorHome")
     public String doctorHome(ModelMap model, HttpServletRequest req) {
         User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(userService.getPatientData(authUser.getUsername()));
-
         model.addAttribute("username", authUser.getUsername());
         model.addAttribute("patientsData", userService.getPatientData(authUser.getUsername()));
         return "doctorHome";
