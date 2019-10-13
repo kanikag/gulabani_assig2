@@ -16,14 +16,14 @@ import java.net.URLEncoder;
 
 @Service
 public class SocialMediaConnectionService {
-    public static final String FB_APP_ID = "460946734518075";
-    public static final String FB_APP_SECRET = "9e1de92a18a6469e13849ee90b12b784";
-    public static final String REDIRECT_URI = "http://localhost:8080/facebooklogin";
+    public static final String FB_APP_ID = "758161844622100";
+    public static final String FB_APP_SECRET = "6b9cd1a8825aa2e68e814b20baa1d26d";
+    public static final String REDIRECT_URI = "https://floating-taiga-98963.herokuapp.com/facebooklogin";
 
 
     public static final String SPOTIFY_APP_ID = "46c4c2487589493e9435f73e216c58bf";
     public static final String SPOTIFY_APP_SECRET = "570acedf36ef4146ad5359c5e698fb6b";
-    public static final String SPOTIFY_REDIRECT_URI = "http://localhost:8080/spotifylogin";
+    public static final String SPOTIFY_REDIRECT_URI = "https://floating-taiga-98963.herokuapp.com/spotifylogin";
 
     public static final String GITHUB_APP_ID = "36eba14c6767eac8cce5";
 
