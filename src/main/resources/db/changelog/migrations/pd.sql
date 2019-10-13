@@ -158,7 +158,7 @@ CREATE TABLE `Therapy` (
 -- Dumping data for table `Therapy`
 --
 
-INSERT INTO `Therapy` (`therapyID`, `User_IDpatient`, `User_IDmed`, `TherapyList_IDtherapylist`) VALUES
+INSERT INTO `Therapy` (`therapyID`, `User_IDpatient`, `User_IDmed`, `list_id`) VALUES
 (1, 3, 1, 1),
 (2, 4, 1, 1);
 
@@ -259,7 +259,7 @@ ALTER TABLE `Therapy`
   ADD PRIMARY KEY (`therapyID`),
   ADD KEY `fk_UserID_Patient_idx` (`User_IDpatient`),
   ADD KEY `fk_UserID_medic_idx` (`User_IDmed`),
-  ADD KEY `fk_Therapy_ListID_idx` (`TherapyList_IDtherapylist`);
+  ADD KEY `fk_Therapy_ListID_idx` (`list_id`);
 
 --
 -- Indexes for table `Therapy_List`
@@ -362,7 +362,7 @@ ALTER TABLE `Test_Session`
 -- Constraints for table `Therapy`
 --
 ALTER TABLE `Therapy`
-  ADD CONSTRAINT `fk_Therapy_ListID` FOREIGN KEY (`TherapyList_IDtherapylist`) REFERENCES `Therapy_List` (`therapy_listID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Therapy_ListID` FOREIGN KEY (`list_id`) REFERENCES `Therapy_List` (`therapy_listID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_UserID_Patient` FOREIGN KEY (`User_IDpatient`) REFERENCES `User` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_UserID_medic` FOREIGN KEY (`User_IDmed`) REFERENCES `User` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
